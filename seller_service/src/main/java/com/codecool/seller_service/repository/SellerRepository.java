@@ -9,7 +9,7 @@ public interface SellerRepository extends JpaRepository<Seller, Long> {
 
     Seller findSellerById(Long id);
 
-    @Query(value = "DELETE FROM Seller where Seller.id = :id")
+    @Query(value = "DELETE FROM Seller s where s.id = :id")
     void deleteSellerById(@Param("id") long id);
 
 
