@@ -11,7 +11,7 @@ public class ProductCaller {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value("${video-recommendations.url}")
+    @Value("${product.url}")
     private String url;
 
     public void deleteProduction(Long productId) {
