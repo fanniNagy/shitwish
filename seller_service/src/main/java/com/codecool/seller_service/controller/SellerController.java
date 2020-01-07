@@ -20,5 +20,17 @@ public class SellerController {
         return sellerRepository.findSellerById(id);
     }
 
-
+    @PostMapping()
+    public Seller addSeller(@RequestBody @Valid Seller seller){
+        Seller newSeller = Seller.builder()
+                .name(seller.getName())
+                .email(seller.getEmail())
+                .phoneNumber(seller.getPhoneNumber())
+                .build();
+        return sellerRepository.saveAndFlush(newSeller);
+    }
+    @DeleteMapping("/{id}")
+    public void removeSeller(@PathVariable Long id){
+        sellerRepository.deleteSellerById(id);
+    }
 }
