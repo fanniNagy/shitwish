@@ -2,6 +2,7 @@ package codecool.product_service.controller;
 
 import codecool.product_service.model.Product;
 import codecool.product_service.model.SellerDetail;
+import codecool.product_service.model.request_response.Buyer;
 import codecool.product_service.model.request_response.ProductWithSellerDetail;
 import codecool.product_service.service.ProductService;
 import codecool.product_service.service.SellerService;
@@ -41,6 +42,11 @@ public class ProductController {
     @DeleteMapping("/{id}")
     Product deleteProductById(@PathVariable("id") Long id) {
         return productService.deleteProductById(id);
+    }
+
+    @PostMapping("/{id}/buy")
+    void buyProduct(@PathVariable("id") Long id, @RequestBody Buyer buyer) throws JSONException {
+        productService.buyProductById(id, buyer);
     }
 
 

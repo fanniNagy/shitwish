@@ -2,6 +2,8 @@ package codecool.product_service.service;
 
 import codecool.product_service.model.Product;
 import codecool.product_service.model.SellerDetail;
+import codecool.product_service.model.Transaction;
+import codecool.product_service.model.request_response.Buyer;
 import codecool.product_service.model.request_response.ProductWithSellerDetail;
 import codecool.product_service.repository.ProductRepository;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +23,8 @@ public class ProductService {
     ProductRepository productRepository;
 
     SellerService sellerService;
+
+    TransactionService transactionService;
 
     public List<Product> getAllProducts() {
         return productRepository.findAll();
@@ -70,5 +75,21 @@ public class ProductService {
         Optional<Product> productOptional = productRepository.findById(id);
         if (productOptional.isPresent()) return productOptional.get();
         else throw new IllegalArgumentException();
+    }
+
+    public void buyProductById(Long id, Buyer buyer) throws JSONException {
+        Product product = getProductById(id);
+        SellerDetail sellerDetail = sellerService.getSellerById(product.getId());
+
+        transactionService.addTransaction(
+                Transaction.builder()
+                .productId(product.getId())
+                .buyer(buyer.getName())
+                .productName(product.getName())
+                .seller(sellerDetail.getName())
+                .date(new Date())
+                .productPrice(product.getPrice())
+                .build()
+        );
     }
 }
