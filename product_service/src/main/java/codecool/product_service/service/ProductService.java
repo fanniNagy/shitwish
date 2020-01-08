@@ -36,7 +36,7 @@ public class ProductService {
         if (productOptional.isPresent()) product = productOptional.get();
         else throw new IllegalArgumentException();
 
-        SellerDetail sellerDetail = sellerService.getSellerById(product.getId());
+        SellerDetail sellerDetail = sellerService.getSellerById(product.getSellerDetailId());
 
         return ProductWithSellerDetail.builder()
                 .productName(product.getName())

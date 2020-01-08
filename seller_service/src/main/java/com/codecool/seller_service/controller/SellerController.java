@@ -20,7 +20,7 @@ public class SellerController {
         return sellerRepository.findSellerById(id);
     }
 
-    @PostMapping()
+    @PostMapping
     public Seller addSeller(@RequestBody @Valid Seller seller){
         Seller newSeller = Seller.builder()
                 .name(seller.getName())

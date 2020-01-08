@@ -45,9 +45,14 @@ public class SellerService {
     }
 
     public SellerDetail getSellerById(Long id) {
-      return restTemplate.getForEntity(
-                baseUrl + "/" + id,
+        String fetchUrl = baseUrl + "/" + id;
+        log.warn(fetchUrl);
+        SellerDetail body = restTemplate.getForEntity(
+                fetchUrl,
                 SellerDetail.class).getBody();
+
+        log.info(body.toString());
+        return body;
     }
 
 }

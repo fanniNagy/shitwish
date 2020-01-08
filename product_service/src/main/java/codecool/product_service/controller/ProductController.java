@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @Slf4j
-@RequestMapping("/product")
 @AllArgsConstructor
 public class ProductController {
 
