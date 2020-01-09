@@ -1,12 +1,9 @@
 package com.codecool.seller_service;
 
-import com.codecool.seller_service.model.Seller;
 import com.codecool.seller_service.repository.SellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class SellerServiceApplication {
@@ -16,11 +13,6 @@ public class SellerServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SellerServiceApplication.class, args);
-    }
-
-    @PostConstruct
-    public void init(){
-        sellerRepository.save(Seller.builder().email("www.asd.com").name("asder").phoneNumber("+36301231212").build());
     }
 
 }

@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +15,6 @@ public class Transaction {
     private String buyer;
     private String productName;
     private String seller;
-    private Date date;
+    private LocalDate date;
     private BigInteger productPrice;
 }

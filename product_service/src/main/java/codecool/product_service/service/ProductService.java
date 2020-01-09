@@ -11,7 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,17 +79,22 @@ public class ProductService {
 
     public void buyProductById(Long id, Buyer buyer) throws JSONException {
         Product product = getProductById(id);
+        log.warn(product.toString());
         SellerDetail sellerDetail = sellerService.getSellerById(product.getId());
-
-        transactionService.addTransaction(
-                Transaction.builder()
+        log.warn(sellerDetail.toString());
+        Transaction build = Transaction.builder()
                 .productId(product.getId())
                 .buyer(buyer.getName())
                 .productName(product.getName())
                 .seller(sellerDetail.getName())
-                .date(new Date())
+                .date(LocalDate.now())
                 .productPrice(product.getPrice())
-                .build()
+                .build();
+
+        log.warn(build.toString());
+
+        transactionService.addTransaction(
+                build
         );
     }
 }

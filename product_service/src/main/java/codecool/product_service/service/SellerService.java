@@ -51,7 +51,6 @@ public class SellerService {
                 fetchUrl,
                 SellerDetail.class).getBody();
 
-        log.info(body.toString());
         return body;
     }
 

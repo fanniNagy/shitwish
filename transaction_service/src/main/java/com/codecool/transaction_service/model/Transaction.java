@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.math.BigInteger;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -29,7 +29,7 @@ public class Transaction {
 
     private String seller;
 
-    private Date date;
+    private LocalDate date;
 
     private BigInteger productPrice;
 

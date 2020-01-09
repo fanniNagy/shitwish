@@ -1,7 +1,6 @@
 package codecool.product_service.controller;
 
 import codecool.product_service.model.Product;
-import codecool.product_service.model.SellerDetail;
 import codecool.product_service.model.request_response.Buyer;
 import codecool.product_service.model.request_response.ProductWithSellerDetail;
 import codecool.product_service.service.ProductService;
@@ -33,7 +32,7 @@ public class ProductController {
         return productService.getProductWithSellerDetailById(id);
     }
 
-    @PostMapping
+    @PutMapping
     Product addProduct(@RequestBody ProductWithSellerDetail productWithSellerDetail) throws JSONException {
         return productService.addProduct(productWithSellerDetail);
     }

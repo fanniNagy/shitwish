@@ -1,6 +1,5 @@
 package codecool.product_service.service;
 
-import codecool.product_service.model.SellerDetail;
 import codecool.product_service.model.Transaction;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +12,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 
 @Service
 @Slf4j
@@ -27,6 +29,7 @@ public class TransactionService {
     public void addTransaction(Transaction transaction) throws JSONException {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAcceptCharset(Collections.singletonList(StandardCharsets.UTF_8));
 
         JSONObject transactionJsonObject = new JSONObject();
         transactionJsonObject.put("productId", transaction.getProductId());
