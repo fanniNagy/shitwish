@@ -80,7 +80,7 @@ public class ProductService {
     public void buyProductById(Long id, Buyer buyer) throws JSONException {
         Product product = getProductById(id);
         log.warn(product.toString());
-        SellerDetail sellerDetail = sellerService.getSellerById(product.getId());
+        SellerDetail sellerDetail = sellerService.getSellerById(product.getSellerDetailId());
         log.warn(sellerDetail.toString());
         Transaction build = Transaction.builder()
                 .productId(product.getId())
